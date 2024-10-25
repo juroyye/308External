@@ -1,7 +1,7 @@
 
 
 // The breed selection input element.
-// const breedSelect = document.getElementById("breedSelect");
+const breedSelect = document.getElementById("breedSelect");
 // The information section div element.
 const infoDump = document.getElementById("infoDump");
 // The progress bar div element.
@@ -26,13 +26,14 @@ async function initialLoad() {
   const dataArr = response.data;
 
   for (let i = 0; i < dataArr.length; i++) {
-    // const breedSelect = document.getElementById("breedSelect");
+    const breedSelect = document.getElementById("breedSelect");
    const option = document.createElement('option')
    option.textContent = dataArr[i].name
-  //  console.log(option)
+    option.value = dataArr[i].id
   breedSelect.append(option)
-  }
 }
+}
+
 initialLoad();
 
 /**
@@ -49,6 +50,13 @@ initialLoad();
  * - Each new selection should clear, re-populate, and restart the Carousel.
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
+
+breedSelect.addEventListener('click', ()=> {
+  
+})
+
+
+
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
