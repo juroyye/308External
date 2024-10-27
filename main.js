@@ -1,5 +1,3 @@
-
-
 // The breed selection input element.
 const breedSelect = document.getElementById("breedSelect");
 // The information section div element.
@@ -9,6 +7,7 @@ const progressBar = document.getElementById("progressBar");
 // The get favourites button element.
 const getFavouritesBtn = document.getElementById("getFavouritesBtn");
 
+const newHeader = document.getElementById("descrip")
 // Step 0: Store your API key here for reference and easy access.
 const API_KEY = "";
 
@@ -22,16 +21,14 @@ const API_KEY = "";
  */
 
 async function initialLoad() {
-  const response = await axios.get("https://api.thecatapi.com/v1/breeds")
+  const response = await axios.get("https://api.thecatapi.com/v1/breeds");
   const dataArr = response.data;
-
   for (let i = 0; i < dataArr.length; i++) {
-    const breedSelect = document.getElementById("breedSelect");
-   const option = document.createElement('option')
-   option.textContent = dataArr[i].name
-    option.value = dataArr[i].id
-  breedSelect.append(option)
-}
+    const option = document.createElement("option");
+    option.textContent = dataArr[i].name;
+    option.value = dataArr[i].id;
+    breedSelect.append(option);
+  }
 }
 
 initialLoad();
@@ -51,11 +48,16 @@ initialLoad();
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
 
-breedSelect.addEventListener('click', ()=> {
+breedSelect.addEventListener("change", (event) => {
   
-})
-
-
+  const breedID = event.target.value;
+  axios.get(`https://api.thecatapi.com/v1/breeds/${breedID}`)
+    .then((response) => {
+      const breedDescrip = response.data.description;
+      newHeader.textContent = breedDescrip
+    }
+     );
+    });
 
 
 /**

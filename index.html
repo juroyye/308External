@@ -15,7 +15,8 @@
     <!-- Our Styles -->
     <link href="styles.css" rel="stylesheet" />
 
-    <!-- jQuery -->
+    <!-- jQuery -->  
+       
     <script
       src="https://code.jquery.com/jquery-3.6.4.min.js"
       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
@@ -26,8 +27,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Our Scripts -->
-    <script type="text/javascript" src="Carousel.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+     <script type="text/javascript" src="Carousel.js"></script>
+        <script defer type="text/javascript" src="main.js"></script>
+    
+
   </head>
 
   <body>
@@ -50,8 +53,9 @@
       <button id="getFavouritesBtn" class="btn btn-success mx-auto mb-5">
         Get Favorites
       </button>
+     
     </div>
-
+ <h1 id="descrip"></h1>
     <!-- Carousel -->
     <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
       <div id="carouselInner" class="carousel-inner"></div>
@@ -109,5 +113,6 @@
       </div>
     </template>
     <!-- Carousel Item Template -->
+  
   </body>
 </html>
