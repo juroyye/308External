@@ -77,3 +77,34 @@ body {
     height: 17em;
   }
 }
+
+/* 
+async function loadBreedInfo(breedID) {
+  try {
+    const response = await axios.get(`https://api.thecatapi.com/v1/images/search?breed_id=${breedID}&limit=5`, {
+    });
+    const dataArr = response.data;
+
+    // Clear existing info and carousel elements
+    infoDump.innerHTML = "";
+    newHeader.textContent = "";
+
+    // Create and populate the carousel for each image in the response
+    const carousel = document.createElement("div");
+    carousel.classList.add("carousel");
+
+    dataArr.forEach((item) => {
+      const imgElement = document.createElement("img");
+      imgElement.src = item.url;
+      imgElement.alt = "Breed Image";
+      imgElement.classList.add("carousel-image");
+      carousel.appendChild(imgElement);
+    });
+
+    // Append carousel to the infoDump
+    infoDump.appendChild(carousel);
+  } catch (error) {
+    console.error("Error fetching breed information:", error);
+    infoDump.textContent = "Failed to load breed information. Please try again later.";
+  }
+} */

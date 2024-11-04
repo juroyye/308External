@@ -7,7 +7,7 @@ const progressBar = document.getElementById("progressBar");
 // The get favourites button element.
 const getFavouritesBtn = document.getElementById("getFavouritesBtn");
 
-const newHeader = document.getElementById("descrip")
+const newHeader = document.getElementById("descrip");
 // Step 0: Store your API key here for reference and easy access.
 const API_KEY = "";
 
@@ -49,15 +49,34 @@ initialLoad();
  */
 
 breedSelect.addEventListener("change", (event) => {
-  
   const breedID = event.target.value;
-  axios.get(`https://api.thecatapi.com/v1/breeds/${breedID}`)
+  axios
+    .get(`https://api.thecatapi.com/v1/breeds/${breedID}`)
     .then((response) => {
       const breedDescrip = response.data.description;
-      newHeader.textContent = breedDescrip
-    }
-     );
+
+
+      newHeader.textContent = breedDescrip;
+
+
+      console.log(response.data)
+      
+
+      for (let res in response.data){
+        
+      let pkey = document.createElement('p')
+      let pVal = document.createElement('p')
+
+        pkey.textContent = res
+        infoDump.appendChild(pkey)
+
+        pVal.textContent = response.data[res]
+        infoDump.appendChild(pVal)
+      }
+      
     });
+});
+
 
 
 /**
@@ -72,6 +91,7 @@ breedSelect.addEventListener("change", (event) => {
  *   by setting a default header with your API key so that you do not have to
  *   send it manually with all of your requests! You can also set a default base URL!
  */
+// COMPLETE
 /**
  * 5. Add axios interceptors to log the time between request and response to the console.
  * - Hint: you already have access to code that does this!
@@ -94,6 +114,8 @@ breedSelect.addEventListener("change", (event) => {
  *   once or twice per request to this API. This is still a concept worth familiarizing yourself
  *   with for future projects.
  */
+
+progressBar.style.width = "200px";
 
 /**
  * 7. As a final element of progress indication, add the following to your axios interceptors:
