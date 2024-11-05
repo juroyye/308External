@@ -49,35 +49,39 @@ initialLoad();
  */
 
 breedSelect.addEventListener("change", (event) => {
+
+  progressBar.style.width = '0px'
   const breedID = event.target.value;
+
+  const startTime = Date.now();
+  console.log(startTime);
+
   axios
     .get(`https://api.thecatapi.com/v1/breeds/${breedID}`)
     .then((response) => {
-      const breedDescrip = response.data.description;
+      const endTime = Date.now();
+      console.log(endTime);
+      const timeTaken = endTime - startTime;
+      console.log(`${timeTaken} milliseconds`);
 
+      const breedDescrip = response.data.description;
 
       newHeader.textContent = breedDescrip;
 
+      for (let res in response.data) {
+        let pkey = document.createElement("p");
+        let pVal = document.createElement("p");
 
-      console.log(response.data)
-      
+        pkey.textContent = res;
+        pkey.style.border = "solid black 1px";
+        infoDump.appendChild(pkey);
 
-      for (let res in response.data){
-        
-      let pkey = document.createElement('p')
-      let pVal = document.createElement('p')
-
-        pkey.textContent = res
-        infoDump.appendChild(pkey)
-
-        pVal.textContent = response.data[res]
-        infoDump.appendChild(pVal)
+        pVal.textContent = response.data[res];
+        pVal.style.backgroundColor = "pink";
+        infoDump.appendChild(pVal);
       }
-      
     });
 });
-
-
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
@@ -98,7 +102,7 @@ breedSelect.addEventListener("change", (event) => {
  * - Add a console.log statement to indicate when requests begin.
  * - As an added challenge, try to do this on your own without referencing the lesson material.
  */
-
+    // COMPLETE
 /**
  * 6. Next, we'll create a progress bar to indicate the request is in progress.
  * - The progressBar element has already been created for you.
@@ -115,7 +119,7 @@ breedSelect.addEventListener("change", (event) => {
  *   with for future projects.
  */
 
-progressBar.style.width = "200px";
+
 
 /**
  * 7. As a final element of progress indication, add the following to your axios interceptors:
